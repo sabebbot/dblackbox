@@ -6,17 +6,20 @@
         <div class="card-header">
             <h3>Data News</h3>
         </div>
+        <div class="actionbutton mt-2">
+   <a class="btn btn-info float-right mb20" href="<?=site_url('Anews/create')?>">Add news</a>
+</div>
 <table class="table">
 <thead>
 <tr>
-    <th>ID</th>
+    <th>#</th>
     <th>Title</th>
     <th>Status</th>
     <th>Action</th>
 </tr>
 </thead>
 <tbody>
-<?php foreach($newses as $news): ?>
+<?php foreach($news as $news): ?>
 <tr>
     <td><?= $news['id'] ?></td>
     <td>
@@ -31,9 +34,8 @@
         <?php endif ?>
     </td>
     <td>
-        <a href="<?= base_url('/news/'.$news['id'].'/preview') ?>" class="btn btn-sm btn-outline-secondary" target="_blank">Preview</a>
-        <a href="<?= base_url('a/news/'.$news['id'].'/edit') ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
-        <a href="#" data-href="<?= base_url('admin/news/'.$news['id'].'/delete') ?>" onclick="confirmToDelete(this)" class="btn btn-sm btn-outline-danger">Delete</a>
+    <a class="btn btn-sm btn-info" href="<?= site_url('Anews/edit/'.$news['id']) ?>">Edit</a>
+         <a class="btn btn-sm btn-danger" href="<?= site_url('Anews/delete/'.$news['id']) ?>">Delete</a>
     </td>
 </tr>
 <?php endforeach ?>
@@ -55,12 +57,5 @@
   </div>
 </div>
 
-<script>
-function confirmToDelete(el){
-    $("#delete-button").attr("href", el.dataset.href);
-    $("#confirm-dialog").modal('show');
-}
-</script>
 
-
-<?= $this->endSection() ?>
+<?= $this->endSection(''); ?>

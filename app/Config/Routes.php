@@ -35,8 +35,13 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 	$routes->get('dashboard', 'Dashboard::index');
-	$routes->get('dashboard/news', 'Dashboard::berita');
-	
+	//$routes->get('News/berita', 'News::berita');
+	$routes->get('dashboard/news', 'Anews::index');
+	$routes->get('News/new', 'Anews::new');
+	$routes->post('Dashboard/news', 'Anews::create');
+	$routes->get('News/edit/(:num)', 'Anews::edit/$1');
+	$routes->put('Anews/(:num)', 'Anews::update/$1');
+	$routes->delete('Anews/(:num)', 'Anews::delete/$1');
 
 
 /*
